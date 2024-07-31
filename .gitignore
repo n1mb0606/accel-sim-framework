@@ -12,3 +12,4 @@ gpu-simulator/gpgpu-sim
 .vscode/*
 extern
 gpu-simulator/accel_sim.pyi
+.venv
