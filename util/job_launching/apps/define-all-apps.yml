@@ -799,3 +799,6 @@ dnntest:
         - dnntest.sh:
             - args:
               accel-sim-mem: 10G
+        - mobilenet.sh:
+            - args:
+              accel-sim-mem: 10G
