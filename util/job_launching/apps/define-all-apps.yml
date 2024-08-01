@@ -791,8 +791,8 @@ mlperf_inference_no_external_datasets:
             - args:
               accel-sim-mem: 60G
 
-# dnntest
-dnntest:
+# mlapp
+mlapp:
     exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
     data_dirs: ""
     execs:
