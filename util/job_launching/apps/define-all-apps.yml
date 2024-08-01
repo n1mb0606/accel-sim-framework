@@ -790,3 +790,12 @@ mlperf_inference_no_external_datasets:
         - inference_mlperf_ssd:
             - args:
               accel-sim-mem: 60G
+
+# dnntest
+dnntest:
+    exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
+    data_dirs: ""
+    execs:
+        - dnntest.sh:
+            - args:
+              accel-sim-mem: 10G
