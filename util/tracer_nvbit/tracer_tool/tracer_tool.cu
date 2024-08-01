@@ -726,7 +726,7 @@ void *recv_thread_fun(void *) {
   return NULL;
 }
 
-void nvbit_at_ctx_init(CUcontext ctx) {
+void nvbit_tool_init(CUcontext ctx) {
   recv_thread_started = true;
   channel_host.init(0, CHANNEL_SIZE, &channel_dev, NULL);
   pthread_create(&recv_thread, NULL, recv_thread_fun, NULL);
