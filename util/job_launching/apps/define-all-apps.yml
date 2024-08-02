@@ -802,3 +802,6 @@ mlapp:
         - mobilenet.sh:
             - args:
               accel-sim-mem: 10G
+        - resnet.sh:
+            - args:
+              accel-sim-mem: 10G
