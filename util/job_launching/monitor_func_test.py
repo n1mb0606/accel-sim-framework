@@ -8,6 +8,27 @@ import sys
 import common
 import time
 
+import smtplib
+from email.message import EmailMessage
+
+def send_email(subject, content):
+    email_from = os.environ['SMTP_FROM_EMAIL']
+    email_pw = os.environ['SMTP_FROM_PW']
+    email_to = os.environ['SMTP_TO_EMAIL']
+
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
+    s.login(email_from, email_pw)
+
+    msg = EmailMessage()
+    msg.set_content(content)
+    msg['Subject'] = subject
+
+    s.send_message(msg, email_from, email_to)
+    s.quit()
+
+    
+
 
 def getColId(colHeader, headerLine):
     name_line_match = re.match(colHeader, headerLine)
@@ -194,6 +215,7 @@ failed_job_file = ""
 
 while True:
     jobstatus_out_file = open(jobstatus_out_filename, "w+")
+    email_content = ''
     if options.verbose:
         print("Calling job_status.py")
     if (
@@ -225,7 +247,9 @@ while True:
         num_no_err = 0
         for line in jobstatus_out_file.readlines():
             if options.verbose:
-                print(line.strip())
+                jobstatus_line = line.strip()
+                email_content += (jobstatus_line + '\n')
+                print(jobstatus_line)
             if jobStatusCol == None:
                 jobStatusCol = getColId("(.*)JobStatus.*", line)
             else:
@@ -263,8 +287,12 @@ while True:
         print("All {0} Tests Done.".format(total))
         if num_error == 0:
             print("Congratulations! All Tests Pass!")
+            # send sucess mail
+            send_email('Simulation succeed', email_content)
         else:
             print("Something did not pass.")
+            # send fail mail
+            send_email('Simulation failed', email_content) 
 
         handle_exit(jobstatus_out_filename)
     else:
