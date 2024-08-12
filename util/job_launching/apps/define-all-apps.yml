@@ -796,12 +796,18 @@ mlapp:
     exec_dir: "$GPUAPPS_ROOT/bin/$CUDA_VERSION/release/"
     data_dirs: ""
     execs:
-        - dnntest.sh:
-            - args:
-              accel-sim-mem: 10G
+        #- dnntest.sh:
+            #- args:
+              #accel-sim-mem: 10G
         - mobilenet.sh:
             - args:
               accel-sim-mem: 10G
         - resnet.sh:
             - args:
               accel-sim-mem: 10G
+        - vgg.sh:
+            - args:
+              accel-sim-mem: 10G
+        #- vit.sh:
+            #- args:
+              #accel-sim-mem: 10G
