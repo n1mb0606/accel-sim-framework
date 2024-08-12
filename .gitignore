@@ -13,3 +13,4 @@ gpu-simulator/gpgpu-sim
 extern
 gpu-simulator/accel_sim.pyi
 .venv
+*.tar.gz
