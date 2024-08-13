@@ -797,8 +797,8 @@ mlapp:
     data_dirs: ""
     execs:
         #- dnntest.sh:
-            #- args:
-              #accel-sim-mem: 10G
+        #    - args:
+        #      accel-sim-mem: 10G
         - mobilenet.sh:
             - args:
               accel-sim-mem: 10G
@@ -808,6 +808,6 @@ mlapp:
         - vgg.sh:
             - args:
               accel-sim-mem: 10G
-        #- vit.sh:
-            #- args:
-              #accel-sim-mem: 10G
+        - vit.sh:
+            - args:
+              accel-sim-mem: 10G
