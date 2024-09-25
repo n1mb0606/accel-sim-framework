@@ -1,16 +1,9 @@
 import re
 
 # 입력 파일 경로
-input_file = 'stats_res.csv'
+input_file = 'overall_stats.csv'
 # 출력 파일 경로
-output_file = 'output.csv'
-
-# 정규 표현식 패턴
-patterns = {
-    'gpu_tot_sim_insn': r'gpu_tot_sim_insn\s*=\s*(.*)',
-    'gpgpu_simulation_time': r'gpgpu_simulation_time\s*=.*\(([0-9]+) sec\).*',
-    'gpu_tot_sim_cycle': r'gpu_tot_sim_cycle\s*=\s*(.*)'
-}
+output_file = 'overall_stats_conv.csv'
 
 # 파일 읽기
 with open(input_file, 'r') as file:
@@ -54,8 +47,8 @@ for i, app in enumerate(app_list):
 result += '\n'
 
 for output in output_list:
+    result += output
     for app in app_list:
-        result += output
         result += ','
         result += data[app][output]
     result += '\n'
