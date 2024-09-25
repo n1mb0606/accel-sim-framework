@@ -15,3 +15,4 @@ gpu-simulator/accel_sim.pyi
 .venv
 *.tar.gz
 set_email.sh
+*.ncu-rep
